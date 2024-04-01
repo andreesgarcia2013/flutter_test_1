@@ -21,6 +21,7 @@ class _UserFormScreenState extends State<UserFormScreen> {
       if (_formKey.currentState!.validate()){
         final username = usernameController.value.text;
         Preferences.token=username;
+        print(username);
         // Navigate to task screen
       }
     }
@@ -35,6 +36,7 @@ class _UserFormScreenState extends State<UserFormScreen> {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
+                    controller: usernameController,
                     decoration: const InputDecoration(
                       hintText: 'Ingresa un usuario'
                     ),

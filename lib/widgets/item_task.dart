@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_test_1/models/task_model.dart';
 
 class ItemTask extends StatelessWidget {
-  const ItemTask({super.key});
+  const ItemTask({super.key, required this.task});
+  final TaskModel task;
 
   @override
   Widget build(BuildContext context) {
-    bool completed=true;
-    String date= '21-04-2000';
 
     void onChangeStateTask(completed){
       print('Change State Task');
@@ -23,17 +23,17 @@ class ItemTask extends StatelessWidget {
     return ListTile(
       onTap: handleTapTask,
       leading: Checkbox(
-        value: completed,
+        value: task.isCompleted,
         onChanged: onChangeStateTask,
       ),
       title: Text(
-        'title',
+        task.title,
         style: TextStyle(
-          decoration: completed ? TextDecoration.lineThrough : null,
+          decoration: task.isCompleted ? TextDecoration.lineThrough : null,
         ),
       ),
       subtitle: Text(
-        'Fecha: ${date}',
+        task.dueDate != null ? task.dueDate! : '',
       ),
       trailing: IconButton(
         onPressed: handleEditTask,

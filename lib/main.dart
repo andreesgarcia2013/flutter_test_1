@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_test_1/providers/tasks_provider.dart';
 import 'package:flutter_test_1/shared_preferences/preferences.dart';
 import 'package:flutter_test_1/task_app.dart';
+import 'package:provider/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -13,6 +15,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const TaskApp();
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: ((_)=>TaskProvider()))
+      ],
+      child: const TaskApp()
+    );
   }
 }
